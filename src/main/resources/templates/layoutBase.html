@@ -1,0 +1,113 @@
+<!--suppress ALL -->
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Gerenciador de Cartórios</title>
+    <link
+            crossorigin="anonymous"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          rel="stylesheet">
+
+    <style>
+        .nav-link {
+            font-family: 'Roboto', sans-serif;
+            color: black;
+            font-size: 1.5em;
+            justify-content: flex-end;
+            margin-right: 15px;
+        }
+
+        .buttons {
+            width: 10em;
+            height: auto;
+        }
+
+        body {
+            background: ghostwhite;
+        }
+
+        label {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5em;
+        }
+
+        .logo {
+            margin-left: 15px;
+        }
+    </style>
+
+
+</head>
+
+<div th:fragment="navbar">
+    <nav
+            class="navbar navbar-expand-lg mb-3 d-flex justify-content-between">
+
+        <ul class="nav">
+            <li class="nav-item"><a aria-current="page"
+                                    class="nav-link active" href="/">Inicio</a></li>
+        </ul>
+    </nav>
+</div>
+
+<footer class="card-footer text-muted text-center" style="position: fixed; left: 0;  bottom: 0; width: 100%;">
+    <p>Gerenciador de Cartórios</p>
+</footer>
+
+<div th:fragment="form">
+
+    <div class="form-group">
+        <label class="form-label" for="nome">Nome</label>
+        <input class="form-control" id="nome" placeholder="Nome Completo" th:field="*{nome}" type="text">
+    </div>
+
+    <div>
+        <label class="form-label" for="endereco">Endereço</label>
+        <input class="form-control" id="endereco" placeholder="Endereço Completo" th:field="*{endereco}" type="text">
+    </div>
+    <div>
+        <label class="form-label" for="certidoes">Certidões</label>
+
+        <table class="table table-light">
+            <tr th:each="certificate : ${certidoes}">
+                <th scope="row"></th>
+                <td:block >
+                    <td><input name="cers" th:value="${certificate.id}" type="checkbox" th:checked="${certificate.checked}"/></td>
+                    <td><span th:text="${certificate.nome}"></span></td>
+                </td:block>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<div th:fragment="formView">
+
+    <div class="form-group">
+        <label class="form-label" for="nome">Nome</label>
+        <input class="form-control" id="nome" placeholder="Nome Completo" th:field="*{nome}" type="text" disabled>
+    </div>
+
+    <div>
+        <label class="form-label" for="endereco">Endereço</label>
+        <input class="form-control" id="endereco" placeholder="Endereço Completo" th:field="*{endereco}" type="text" disabled>
+    </div>
+    <div>
+        <label class="form-label" for="certidoes">Certidões</label>
+
+        <table class="table table-light">
+            <tr th:each="certificate : ${certidoes}">
+                <th scope="row"></th>
+                <td:block >
+                    <td><input name="cers" th:value="${certificate.id}" type="checkbox" th:checked="${certificate.checked}" disabled/></td>
+                    <td><span th:text="${certificate.nome}"></span></td>
+                </td:block>
+            </tr>
+        </table>
+    </div>
+
+</div>
+

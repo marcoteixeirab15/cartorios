@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{layoutBase :: head}">
+</head>
+
+<body>
+
+<div th:replace="~{layoutBase :: navbar}"></div>
+<div class="container">
+    <h1 class="mb-3">Ver informacoes</h1>
+    <form action="/" method="get" th:action="@{/}" th:object="${cartorio}">
+
+        <div th:replace="~{layoutBase :: formView}"></div>
+
+    </form>
+    <a href="/">
+        <button class="btn btn-dark">Voltar
+        </button>
+    </a>
+</div>
+<div th:replace="~{layoutBase :: footer}"></div>
+
+</body>
+
+</html>

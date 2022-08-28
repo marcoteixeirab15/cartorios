@@ -1,0 +1,42 @@
+<head th:replace="~{layoutBase :: head}">
+</head>
+
+<body>
+
+<div th:replace="~{layoutBase :: navbar}"></div>
+
+<div class="container mb-2">
+    <h1>Cartórios</h1>
+    <table class="table table-light">
+        <tr class="table-dark">
+            <th></th>
+            <th scope="col">Nome</th>
+            <th scope="col">Endereco</th>
+
+            <th scope="col"></th>
+        </tr>
+
+        <tr th:each="cartorio : ${cartorios}">
+            <th scope="row"></th>
+            <td><span th:text="${cartorio.nome}"></span></td>
+            <td><span th:text="${cartorio.endereco}"></span></td>
+
+            <td class="buttons ">
+                <a th:href="@{view/{id}(id=${cartorio.id})}"
+                                    th:method="get" class="btn btn-success"><i class="fa fa-eye"></i></a>
+                <a th:href="@{form/{id}(id=${cartorio.id})}"
+                                    th:method="get" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                <a th:href="@{delete/{id}(id=${cartorio.id})}" th:method="delete"
+                   class="btn btn-danger"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+    </table>
+
+    <a href="/form"><button class="btn btn-dark">Adicionar
+        cartório</button></a>
+</div>
+
+<div th:replace="~{layoutBase :: footer}"></div>
+</body>
+
+</html>
